@@ -181,9 +181,9 @@ function sketchBoard() {
     var diffX = movemouse.clientX - this.offsetLeft;
     var diffY = movemouse.clientY - this.offsetTop;
     this.addEventListener('mouseup', stopDrag);
-    this.addEventListener('mousemove', moveAlong);
+    this.addEventListener('mousemove', e => moveAlong(e, selected));
     ////////////////////check mouse possition and sets element position on main div///////////////////////
-    function moveAlong(movemouse) {
+    function moveAlong(movemouse, selected) {
       movemouse.preventDefault();
       var left = parseInt(movemouse.clientX - diffX);
       var top = parseInt(movemouse.clientY - diffY);
@@ -199,8 +199,8 @@ function sketchBoard() {
       if (left > window.innerWidth - 1) {
         left = window.innerWidth - 1;
       }
-      this.style.left = left + 'px';
-      this.style.top = top + 'px';
+      selected.style.left = left + 'px';
+      selected.style.top = top + 'px';
     }
     ////////////////////////////ends loop inside/////////////////////
     function stopDrag() {
