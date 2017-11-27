@@ -7,6 +7,14 @@ const Wrapper = styled.div`
   color: white;
 `;
 
+const P = styled.p`
+  cursor: pointer;
+`;
+
+const Clear = styled.h2`
+  cursor: pointer;
+`;
+
 class SideBar extends React.Component {
   constructor() {
     super();
@@ -48,17 +56,17 @@ class SideBar extends React.Component {
       <Wrapper>
         <h2>Directors</h2>
         {Object.keys(directors).map(director => (
-          <p onClick={() => handleOnClick(director, 'director')}>
+          <P key={director} onClick={() => handleOnClick(director, 'director')}>
             {director} ({directors[director]})
-          </p>
+          </P>
         ))}
         <h2>Actors</h2>
         {Object.keys(actors).map(actor => (
-          <p onClick={() => handleOnClick(actor, 'cast')}>
+          <P key={actor} onClick={() => handleOnClick(actor, 'cast')}>
             {actor} ({actors[actor]})
-          </p>
+          </P>
         ))}
-        <h2 onClick={() => handelClear()}>Clear Search</h2>
+        <Clear onClick={() => handelClear()}>Clear Search</Clear>
       </Wrapper>
     );
   }
