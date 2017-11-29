@@ -5,15 +5,17 @@ const Wrapper = styled.header`
   text-align: center;
   grid-row: 1 / 2;
   grid-column: 1 / 4;
-  color:white;
+  color: white;
 `;
 
-const H1 = styled.h1`font-size: 20px;`;
+const MainTitle = styled.h1`
+  font-size: 20px;
+`;
 
 const Header = () => {
   return (
     <Wrapper>
-      <H1>Movie Night</H1>
+      <MainTitle>Movie Night</MainTitle>
     </Wrapper>
   );
 };

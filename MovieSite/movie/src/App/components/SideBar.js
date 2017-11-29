@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   color: white;
 `;
 
-const P = styled.p`
+const Paragraph = styled.p`
   cursor: pointer;
 `;
 
@@ -56,15 +56,15 @@ class SideBar extends React.Component {
       <Wrapper>
         <h2>Directors</h2>
         {Object.keys(directors).map(director => (
-          <P key={director} onClick={() => handleOnClick(director, 'director')}>
+          <Paragraph key={director} onClick={() => handleOnClick(director, 'director')}>
             {director} ({directors[director]})
-          </P>
+          </Paragraph>
         ))}
         <h2>Actors</h2>
         {Object.keys(actors).map(actor => (
-          <P key={actor} onClick={() => handleOnClick(actor, 'cast')}>
+          <Paragraph key={actor} onClick={() => handleOnClick(actor, 'cast')}>
             {actor} ({actors[actor]})
-          </P>
+          </Paragraph>
         ))}
         <Clear onClick={() => handelClear()}>Clear Search</Clear>
       </Wrapper>
