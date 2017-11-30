@@ -36,9 +36,10 @@ class SideBar extends React.Component {
       return {};
     }
 
-    return movies.reduce((accumulator, currentValue) => {
-      return { ...this.findHowMany(currentValue.cast), ...accumulator };
-    }, {});
+    return movies.reduce(
+      (accumulator, currentValue) => ({ ...this.findHowMany(currentValue.cast), ...accumulator }),
+      {}
+    );
   }
 
   findHowMany(movies) {
@@ -52,21 +53,22 @@ class SideBar extends React.Component {
     let { movies, handleOnClick, handelClear } = this.props;
     let directors = this.findDirectors(movies);
     let actors = this.findActors(movies);
+    let text = { directors: 'Directors', actors: 'Actors', clearText: 'Clear Search' };
     return (
       <Wrapper>
-        <h2>Directors</h2>
+        <h2>{text.directors}</h2>
         {Object.keys(directors).map(director => (
           <Paragraph key={director} onClick={() => handleOnClick(director, 'director')}>
             {director} ({directors[director]})
           </Paragraph>
         ))}
-        <h2>Actors</h2>
+        <h2>{text.actors}</h2>
         {Object.keys(actors).map(actor => (
           <Paragraph key={actor} onClick={() => handleOnClick(actor, 'cast')}>
             {actor} ({actors[actor]})
           </Paragraph>
         ))}
-        <Clear onClick={() => handelClear()}>Clear Search</Clear>
+        <Clear onClick={() => handelClear()}>{text.clearText}</Clear>
       </Wrapper>
     );
   }

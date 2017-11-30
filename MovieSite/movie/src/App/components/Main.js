@@ -47,14 +47,12 @@ class Main extends Component {
     this.setState({ filteredMovies: this.state.movies });
   }
 
-  handleClickOnMovie(id) {
-    
-  }
+  handleClickOnMovie(id) {}
 
   render() {
     return (
       <Wrapper>
-        <Header />
+        <Header headerText={'Movie Night'} />
         <SideBar
           movies={this.state.movies}
           handleOnClick={this.handleOnClick}

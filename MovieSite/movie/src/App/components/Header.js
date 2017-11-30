@@ -12,10 +12,10 @@ const MainTitle = styled.h1`
   font-size: 20px;
 `;
 
-const Header = () => {
+const Header = ({ headerText }) => {
   return (
     <Wrapper>
-      <MainTitle>Movie Night</MainTitle>
+      <MainTitle>{headerText}</MainTitle>
     </Wrapper>
   );
 };
