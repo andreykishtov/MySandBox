@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const connection = require('./connection');
 
 var sql = require('mssql');
 
@@ -46,7 +47,7 @@ var executeQuery = async (res, query) => {
     res.json(result);
   } catch (error) {
     console.log(error);
-    res.send(err);
+    res.send(error);
   }
 };
 
