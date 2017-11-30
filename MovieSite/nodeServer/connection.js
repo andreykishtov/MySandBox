@@ -15,11 +15,21 @@ let config = {
 };
 var connection = new Connection(config);
 
-// Attempt to connect and execute queries if connection goes through
-connection.on('connect', function(err) {
+connection.on('connect', err => {
   if (err) {
     console.log(err);
-  } else {
-    console.log('Connected');
+    return;
   }
+  console.log('Connected');
 });
+
+// connected = async () => {
+//   try {
+//     let connected = await connection.connect();
+//     console.log('connected', connected);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// connected();
