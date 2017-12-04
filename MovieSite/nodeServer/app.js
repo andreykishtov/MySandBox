@@ -11,4 +11,4 @@ app.use(cors());
 
 app.listen(port, () => console.log(`server listening On ${port}`));
 
-app.use('/movies', require('./controllers/movies'));
+app.use('/api/movies', require('./controllers/movies'));

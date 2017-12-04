@@ -1,11 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const movies = require('../model/movies');
-const connection = require('../model/connection');
 
-router.get('/api/movies', (req, res) => movies.executeQuery(res, 'select * from [user]'));
+router.get('/', (req, res) => movies.executeQuery(res, 'select * from [TestSchema]'));
 
-router.post('/api/movies', (req, res) => {
+router.post('/', (req, res) => {
   let query = `INSERT INTO [movies] (id,imageUrl,title,director,year) VALUES (${req.body.id},${
     req.body.imageUrl
   },${req.body.title},${req.body.director},${req.body.year});`;
