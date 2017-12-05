@@ -1,9 +1,23 @@
-const arr = [1, 2, 3, 4];
-
-function adjacentElementsProduct(arr) {
-  console.log(arr.slice(1));
-
-  return Math.max(...arr.slice(1).map((x, i) => [x * arr[i]]));
+function almostIncreasingSequence(sequence) {
+  let len = sequence.length;
+  for (let index = 0; index < len - 1; ++index) {
+    if (sequence[index] >= sequence[index + 1]) {
+      let arr = [...sequence.slice(0, index), ...sequence.slice(index + 1, len)];
+      if (check(arr)) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
-adjacentElementsProduct(arr);
+function check(Arr) {
+  let result = true;
+  Arr.reduce((acc, currentValue) => {
+    if (acc >= currentValue) {
+      result = false;
+    }
+    return currentValue;
+  }, -Infinity);
+  return result;
+}

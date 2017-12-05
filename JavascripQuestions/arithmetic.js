@@ -32,4 +32,4 @@ function checkPerm(A) {
 }
 
 let x = checkPerm([-1, 1, 3, 3, 3, 2, 1, 0]);
-console.log(x);
+//console.log(x);

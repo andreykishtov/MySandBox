@@ -67,3 +67,33 @@ function makeArrayConsecutive2(statues) {
     return counter;
   }, 0);
 }
+
+function makeArrayConsecutive2(sequence) {
+  return Math.max(...sequence) - Math.min(...sequence) + 1 - sequence.length;
+}
+
+function makeArrayConsecutive2(statues) {
+  return Math.max.apply(null, statues) - Math.min.apply(null, statues) - statues.length + 1;
+}
+
+// Given a sequence of integers as an array, determine whether it is possible to obtain a strictly increasing sequence by removing no more than one element from the array.
+
+function almostIncreasingSequence(sequence) {
+  return (
+    0 !=
+    sequence.filter((item, ind, array) => {
+      let indexArr = [...array];
+      indexArr.splice(ind, 1);
+      let counter = 0;
+      let filtered = indexArr.reduce((acc, item) => {
+        if (acc < item) {
+          ++counter;
+        }
+        return item;
+      }, -Infinity);
+      if (counter === sequence.length - 1) {
+        return true;
+      }
+    }).length
+  );
+}
