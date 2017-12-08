@@ -97,3 +97,25 @@ function almostIncreasingSequence(sequence) {
     }).length
   );
 }
+
+
+
+function almostIncreasingSequence(sequence) {
+  return (
+    0 !=
+    sequence.filter((item, ind, array) => {
+      let indexArr = [...array];
+      indexArr.splice(ind, 1);
+      let counter = 0;
+      let filtered = indexArr.reduce((acc, item) => {
+        if (acc < item) {
+          ++counter;
+        }
+        return item;
+      }, -Infinity);
+      if (counter === sequence.length - 1) {
+        return true;
+      }
+    }).length
+  );
+}
