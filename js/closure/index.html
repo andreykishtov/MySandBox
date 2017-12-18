@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <div class="container">
+    <h2>1</h2>
+  </div>
+  <div class="container">
+    <h2>2</h2>
+  </div>
+  <div class="container">
+    <h2>3</h2>
+  </div>
+  <div class="container">
+    <h2>4</h2>
+  </div>
+</body>
+<script>
+
+  let arr = document.getElementsByClassName('container')
+
+  let func = myVar => console.log(myVar)
+
+  for (var index = 0; index < arr.length; index++) {
+    var element = arr[index];
+    ((element) => {
+      element.addEventListener('click', () => func(element))
+    })(element)
+  }
+
+</script>
+
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    display: flex;
+    width: 15vw;
+    height: 15vh;
+    background: black;
+  }
+
+  h2 {
+    background: white;
+  }
+</style>
+
+</html>
