@@ -25,12 +25,22 @@
 
   let arr = document.getElementsByClassName('container')
 
-  let func = myVar => console.log(myVar)
+  let func = ({ target }) => {
+    let { style } = target;
+    toggle()
+    style.background = style.background === 'red' ? 'black' : 'red';
+    style.width = style.width === '15vw' ? '25vw' : '15vw';
+    style.height = style.height === '15vh' ? '25vh' : '15vh';
+  }
+
+  let toggle = (style, background = 'red', width = '15vw', height = '15vh') => {
+
+  }
 
   for (var index = 0; index < arr.length; index++) {
     var element = arr[index];
     ((element) => {
-      element.addEventListener('click', () => func(element))
+      element.addEventListener('click', (event) => func(event))
     })(element)
   }
 
@@ -38,6 +48,7 @@
 
 <style>
   .container {
+    transition: ease 2s;
     display: flex;
     justify-content: center;
     margin: 10px;
