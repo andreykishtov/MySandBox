@@ -27,14 +27,11 @@
 
   let func = ({ target }) => {
     let { style } = target;
-    toggle()
+    style.prototype.toggle = (style) =>
+      toggle(, 'backgroud', 'red')
     style.background = style.background === 'red' ? 'black' : 'red';
     style.width = style.width === '15vw' ? '25vw' : '15vw';
     style.height = style.height === '15vh' ? '25vh' : '15vh';
-  }
-
-  let toggle = (style, background = 'red', width = '15vw', height = '15vh') => {
-
   }
 
   for (var index = 0; index < arr.length; index++) {
