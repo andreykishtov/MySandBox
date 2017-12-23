@@ -49,6 +49,15 @@ function adjacentElementsProduct(inputArray) {
   );
 }
 
+
+function adjacentElementsProduct(inputArray) {
+  return inputArray.reduce(
+    (acc, item, index, arr) => (acc < item * arr[index + 1] ? item * arr[index + 1] : acc),
+    -1000
+  );
+}
+// new
+
 function adjacentElementsProduct(arr) {
   return Math.max(...arr.slice(1).map((x, i) => [x * arr[i]]));
 }
