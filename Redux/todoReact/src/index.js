@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
 import reducer from './reducers';
 import todos from './todos';
@@ -16,4 +17,24 @@ const store = createStore(reducer, todos);
 // store.dispatch(editTodo(5, 'delete stuff'));
 // store.dispatch(deleteTodo(5));
 
-ReactDOM.render(<App store={store} />, document.getElementById('root'));
+// class Provider extends React.Component {
+//   getChildContext() {
+//     return {
+//       store: this.props.store
+//     };
+//   }
+//   render() {
+//     return this.props.children;
+//   }
+// }
+
+// Provider.childContextTypes = {
+//   store: PropTypes.object
+// };
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);

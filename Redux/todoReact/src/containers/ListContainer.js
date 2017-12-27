@@ -1,50 +1,32 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import List from '../components/List';
 import { deleteTodo, editTodo, toggleTodo } from '../actions';
 
-class ListContainer extends React.Component {
-  constructor(props) {
-    super(props);
+// todos={this.store.getState()}
+// onDelete={id => this.store.dispatch(deleteTodo(id))}
+// onToggle={id => this.store.dispatch(toggleTodo(id))}
+// onEdit={(id, title) => this.store.dispatch(editTodo(id, title))}
 
-    this.store = this.props.store;
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleToggle = this.handleToggle.bind(this);
-    this.handleEdit = this.handleEdit.bind(this);
-  }
-
-  componentDidMount() {
-    this.unsubscribe = this.store.subscribe(() => this.forceUpdate());
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
-
-  handleDelete(id) {
-    this.store.dispatch(deleteTodo(id));
-  }
-
-  handleToggle(id) {
-    this.store.dispatch(toggleTodo(id));
-  }
-
-  handleEdit(id, title) {
-    this.store.dispatch(editTodo(id, title));
-  }
-
-  render() {
-    return (
-      <List
-        todos={this.store.getState()}
-        onDelete={this.handleDelete}
-        onToggle={this.handleToggle}
-        onEdit={this.handleEdit}
-      />
-    );
-  }
+function mapStateToProps(state) {
+  return {
+    todos: state
+  };
 }
 
-ListContainer.propTypes = {};
+function mapDispatchToProps(dispatch) {
+  return {
+    onDelete: id => dispatch(deleteTodo(id)),
+    onToggle: id => dispatch(toggleTodo(id)),
+    onEdit: (id, title) => dispatch(editTodo(id, title))
+  };
+}
+
+// const createContainerFor = connect(mapStateToProps, mapDispatchToProps);
+
+// const ListContainer = createContainerFor(List);
+
+const ListContainer = connect(mapStateToProps, mapDispatchToProps)(List);
 
 export default ListContainer;
