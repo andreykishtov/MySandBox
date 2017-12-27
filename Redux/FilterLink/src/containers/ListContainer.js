@@ -1,24 +1,12 @@
 import { connect } from 'react-redux';
 
 import { deleteTodo, toggleTodo, editTodo } from '../actions';
+import { getFilteredTodos } from '../reducers';
 import List from '../components/List';
-
-function getFilteredTodos(todos, filter) {
-  switch (filter) {
-    case 'ALL':
-      return todos;
-    case 'COMPLETED':
-      return todos.filter(todo => todo.completed);
-    case 'UNCOMPLETED':
-      return todos.filter(todo => !todo.completed);
-    default:
-      break;
-  }
-}
 
 function mapStateToProps(state) {
   return {
-    todos: getFilteredTodos(state.todos, state.filter)
+    todos: getFilteredTodos(state)
   };
 }
 
