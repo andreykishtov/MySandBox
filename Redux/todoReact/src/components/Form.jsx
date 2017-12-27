@@ -24,7 +24,8 @@ class Form extends React.Component {
     const title = this.state.title;
 
     if (title) {
-      this.store.dispatch(addTodo(title));
+      this.props.onAdd(title);
+      this.setState({ title: '' });
     }
   }
 
