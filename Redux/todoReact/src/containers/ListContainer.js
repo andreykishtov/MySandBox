@@ -1,6 +1,4 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import List from '../components/List';
 import { deleteTodo, editTodo, toggleTodo } from '../actions';
 
