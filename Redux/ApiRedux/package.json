@@ -10,6 +10,7 @@
     "api": "node server"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "cors": "^2.8.4",
     "prop-types": "~15.6.0",
     "react": "~16.0.0",
