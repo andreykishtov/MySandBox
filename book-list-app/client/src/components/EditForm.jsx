@@ -65,22 +65,20 @@ class EditForm extends Component {
       alert('author Must Be a string');
       return false;
     }
+    return true;
   };
 
   handleSubmit = event => {
+    event.preventDefault();
     let { title, author, publishedDate } = this.state;
     if (!this.checkData(title, author, publishedDate)) {
       return;
     }
-    event.preventDefault();
+    this.props.onChangeBook({ id: this.props.book.id, title, author, publishedDate });
     this.props.toggleModal();
   };
 
   render() {
-    {
-      this.props.book.volumeInfo.publishedDate;
-    }
-
     return (
       <Form onSubmit={this.handleSubmit}>
         <Header>Edit Book</Header>

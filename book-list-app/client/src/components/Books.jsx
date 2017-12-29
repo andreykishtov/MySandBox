@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Edit from './Edit';
+import Buttons from './Buttons';
 
 const Wrapper = styled.div`
   width: 200px;
@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   padding-bottom: 10px;
   background: #27282a;
   justify-items: center;
-  grid-template-areas: 'Image Image' 'Title Title' ' Author Author' 'PublishDate Edit';
+  grid-template-areas: 'Image Image' 'Title Title' ' Author Author' 'PublishDate PublishDate' 'Buttons Buttons';
 `;
 
 const Title = styled.h2`
@@ -44,13 +44,13 @@ const Image = styled.img`
   justify-self: center;
 `;
 
-const Book = ({ book }) => (
+const Book = ({ book, onChangeBook, onDelete }) => (
   <Wrapper key={book.id}>
     <Title>{book.volumeInfo.title}</Title>
     <Image src={book.volumeInfo.imageLinks.thumbnail} alt="harry" />
     <PublishDate>{book.volumeInfo.publishedDate}</PublishDate>
     <Author>{book.volumeInfo.authors}</Author>
-    <Edit book={book}>Edit</Edit>
+    <Buttons book={book} onDelete={onDelete} onChangeBook={onChangeBook} />
   </Wrapper>
 );
 

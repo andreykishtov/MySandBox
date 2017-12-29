@@ -27,17 +27,39 @@ class App extends Component {
     this.setState({ items: json.items });
   };
 
-  handleonChange(property, change) {
-    this.setState({ [property]: change });
-  }
+  handleOnChange = formObj => {
+    const items = this.state.items.map(
+      item =>
+        formObj.id === item.id
+          ? {
+              ...item,
+              volumeInfo: {
+                ...item.volumeInfo,
+                title: formObj.title,
+                publishedDate: formObj.publishedDate,
+                authors: [formObj.author]
+              }
+            }
+          : item
+    );
+    this.setState({ items });
+  };
+
+  handleOnDelete = id => {};
 
   render() {
     const { items } = this.state;
-    console.log(items);
     return (
       items.length && (
         <Wrapper>
-          {items.map(book => <Book onChange={this.handleonChange} key={book.id} book={book} />)}
+          {items.map(book => (
+            <Book
+              onDelete={this.handleOnDelete}
+              onChangeBook={this.handleOnChange}
+              key={book.id}
+              book={book}
+            />
+          ))}
         </Wrapper>
       )
     );
