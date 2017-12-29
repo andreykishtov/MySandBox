@@ -34,7 +34,7 @@ class Edit extends Component {
   toggleDeletePopup = () => this.setState({ DeletePopup: !this.state.DeletePopup });
 
   render() {
-    const { book } = this.props;
+    const { book, onDelete } = this.props;
     return (
       <Wrapper>
         <EditButton onClick={() => this.toggleEditModal()}>Edit</EditButton>
@@ -43,7 +43,7 @@ class Edit extends Component {
           <EditForm onChangeBook={this.props.onChangeBook} toggleModal={this.toggleEditModal} book={book} />
         </Modal>
         <Modal isOpen={this.state.DeletePopup}>
-          <DeleteBook toggleDeletePopup={this.toggleDeletePopup} />
+          <DeleteBook id={book.id} onDelete={onDelete} toggleDeletePopup={this.toggleDeletePopup} />
         </Modal>
       </Wrapper>
     );

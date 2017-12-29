@@ -1,12 +1,12 @@
 import React from 'react';
 
-const DeleteBook = ({ toggleDeletePopup, onDelete }) => {
+const DeleteBook = ({ toggleDeletePopup, onDelete, id }) => {
   return (
     <div>
       <h2>Are you Sure?</h2>
       <button
         onClick={() => {
-          onDelete();
+          onDelete(id);
           toggleDeletePopup();
         }}
       >

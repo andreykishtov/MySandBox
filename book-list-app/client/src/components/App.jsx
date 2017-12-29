@@ -45,7 +45,10 @@ class App extends Component {
     this.setState({ items });
   };
 
-  handleOnDelete = id => {};
+  handleOnDelete = id => {
+    const items = this.state.items.filter(item => id !== item.id);
+    this.setState({ items });
+  };
 
   render() {
     const { items } = this.state;
