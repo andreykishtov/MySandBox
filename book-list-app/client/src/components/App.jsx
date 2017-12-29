@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   margin: 0 auto;
   width: 1300px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 0fr 0fr 0fr 0fr;
   grid-gap: 10px;
   background: #1d1e20;
   justify-items: center;
@@ -27,10 +27,20 @@ class App extends Component {
     this.setState({ items: json.items });
   };
 
+  handleonChange(property, change) {
+    this.setState({ [property]: change });
+  }
+
   render() {
     const { items } = this.state;
     console.log(items);
-    return items.length && <Wrapper>{items.map(book => <Book key={book.id} book={book} />)}</Wrapper>;
+    return (
+      items.length && (
+        <Wrapper>
+          {items.map(book => <Book onChange={this.handleonChange} key={book.id} book={book} />)}
+        </Wrapper>
+      )
+    );
   }
 }
 

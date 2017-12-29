@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
+import EditForm from './EditForm';
 
 const Wrapper = styled.div`
   grid-area: Edit;
@@ -17,24 +18,18 @@ const EditButton = styled.button`
 class Edit extends Component {
   constructor(props) {
     super(props);
-    this.state = { isModalOpen: false };
+    this.state = { modalState: false };
   }
 
-  openModal = () => this.setState({ isModalOpen: true });
-
-  closeModal = () => this.setState({ isModalOpen: false });
+  toggleModal = () => this.setState({ modalState: !this.state.modalState });
 
   render() {
+    const { book, children } = this.props;
     return (
       <Wrapper>
-        <EditButton onClick={() => this.openModal()}>{this.props.children}</EditButton>
-        <Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
-          <h1>Modal title</h1>
-          <p>hello</p>
-          <p>{this.props.book.volumeInfo.publishedDate}</p>
-          <p>
-            <button onClick={() => this.closeModal()}>Close</button>
-          </p>
+        <EditButton onClick={() => this.toggleModal()}>{children}</EditButton>
+        <Modal isOpen={this.state.modalState}>
+          <EditForm toggleModal={this.toggleModal} book={book} />
         </Modal>
       </Wrapper>
     );

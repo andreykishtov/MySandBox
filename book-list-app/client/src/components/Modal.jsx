@@ -24,7 +24,7 @@ const Modal = ({ onClose, children, isOpen }) =>
   isOpen && (
     <div>
       <Wrapper>{children}</Wrapper>
-      <BackDrop onClick={e => onClose(e)} />}
+      <BackDrop />
     </div>
   );
 
