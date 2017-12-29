@@ -5,9 +5,14 @@ import Book from './Books';
 const api = 'https://www.googleapis.com/books/v1/volumes?q=harry+potter';
 
 const Wrapper = styled.div`
+  margin: 0 auto;
+  width: 1300px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
+  background: #1d1e20;
+  justify-items: center;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 `;
 
 class App extends Component {
@@ -25,7 +30,7 @@ class App extends Component {
   render() {
     const { items } = this.state;
     console.log(items);
-    return items.length && <Wrapper>{items.map(book => <Book book={book} />)}</Wrapper>;
+    return items.length && <Wrapper>{items.map(book => <Book key={book.id} book={book} />)}</Wrapper>;
   }
 }
 
