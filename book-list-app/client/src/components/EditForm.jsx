@@ -53,10 +53,26 @@ class EditForm extends Component {
 
   handleChange = event => this.setState({ [event.target.name]: event.target.value });
 
+  checkForString = data => typeof data !== 'string';
+
+  checkData = (title, author, publishedDate) => {
+    if (this.checkForString(title)) {
+      alert('title Must Be a string');
+      return false;
+    }
+
+    if (this.checkForString(author)) {
+      alert('author Must Be a string');
+      return false;
+    }
+  };
+
   handleSubmit = event => {
-    const { title, author, publishedDate } = this.state;
+    let { title, author, publishedDate } = this.state;
+    if (!this.checkData(title, author, publishedDate)) {
+      return;
+    }
     event.preventDefault();
-    alert('A name was submitted: ' + JSON.stringify(this.state));
     this.props.toggleModal();
   };
 
@@ -70,13 +86,7 @@ class EditForm extends Component {
         <Header>Edit Book</Header>
         <InputLabel grid-area="Title">
           Title:
-          <InputBox
-            name="title"
-            type="text"
-            title={this.state.title}
-            onChange={this.handleChange}
-            defaultValue={this.props.book.volumeInfo.title}
-          />
+          <InputBox name="title" type="text" title={this.state.title} onChange={this.handleChange} required />
         </InputLabel>
         <InputLabel grid-area="Author">
           Author:
@@ -85,7 +95,7 @@ class EditForm extends Component {
             type="text"
             title={this.state.author}
             onChange={this.handleChange}
-            defaultValue={this.props.book.volumeInfo.authors[0]}
+            required
           />
         </InputLabel>
         <InputLabel grid-area="publishedDate">
@@ -95,7 +105,7 @@ class EditForm extends Component {
             type="text"
             title={this.state.publishedDate}
             onChange={this.handleChange}
-            defaultValue={this.props.book.volumeInfo.publishedDate}
+            required
           />
         </InputLabel>
         <Save type="submit" title="Save" />
