@@ -26,6 +26,7 @@ const InputBox = styled.input`
 `;
 
 const InputLabel = styled.label`
+  color: white;
   grid-area: ${props => props.gridArea};
 `;
 
@@ -84,11 +85,19 @@ class EditForm extends Component {
         <Header>Edit Book</Header>
         <InputLabel grid-area="Title">
           Title:
-          <InputBox name="title" type="text" title={this.state.title} onChange={this.handleChange} required />
+          <InputBox
+            placeholder="please enter Title"
+            name="title"
+            type="text"
+            title={this.state.title}
+            onChange={this.handleChange}
+            required
+          />
         </InputLabel>
         <InputLabel grid-area="Author">
           Author:
           <InputBox
+            placeholder="please enter Author"
             name="author"
             type="text"
             title={this.state.author}
@@ -99,6 +108,7 @@ class EditForm extends Component {
         <InputLabel grid-area="publishedDate">
           Date:
           <InputBox
+            placeholder="please enter Date"
             name="publishedDate"
             type="text"
             title={this.state.publishedDate}

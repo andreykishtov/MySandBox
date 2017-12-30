@@ -2,16 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  padding: 50px;
+  padding: 20px;
   background: #27282a;
-  border-radius: 25px;
 `;
 
 const Button = styled.button`
   background: #1d1e20;
   color: white;
   padding: 10px;
-  margin: 10px;
+  margin-right: 10px;
   border: 1px solid lightgrey;
 `;
 
