@@ -1,50 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-
-const Form = styled.form`
-  padding: 10px;
-  display: grid;
-  background: #27282a;
-  justify-items: center;
-  grid-template-areas:
-    'Header Header Header'
-    'Title Author publishedDate'
-    'Save . Cancel';
-`;
-
-const Header = styled.h2`
-  grid-area: Header;
-  color: white;
-`;
-
-const InputBox = styled.input`
-  background: #1d1e20;
-  color: white;
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid lightgrey;
-`;
-
-const InputLabel = styled.label`
-  color: white;
-  grid-area: ${props => props.gridArea};
-`;
-
-const Save = styled.input`
-  grid-area: Save;
-  background: #1d1e20;
-  color: white;
-  border: 1px solid #2c2d2f;
-  padding: 10px 20px;
-`;
-
-const Cancel = styled.button`
-  grid-area: Cancel;
-  background: #1d1e20;
-  color: white;
-  border: 1px solid #2c2d2f;
-  padding: 10px 20px;
-`;
+import { Form, Header, InputBox, InputLabel, Save, Cancel } from './EditForm.styled.js';
 
 class EditForm extends Component {
   constructor(props) {
