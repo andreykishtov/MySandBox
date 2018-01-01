@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   background: #27282a;
 `;
 
-const DeleteB = styled.button`
+const Button = styled.button`
   background: #1d1e20;
   color: white;
   padding: 10px;
@@ -22,14 +22,14 @@ const DeleteBook = ({ toggleDeletePopup, onDelete, id }) => {
   return (
     <Wrapper>
       <Title>Are you Sure?</Title>
-      <DeleteB
+      <Button
         onClick={() => {
           onDelete(id);
           toggleDeletePopup();
         }}
       >
         Delete Book
-      </DeleteB>
+      </Button>
       <Button onClick={toggleDeletePopup}>Cancel</Button>
     </Wrapper>
   );

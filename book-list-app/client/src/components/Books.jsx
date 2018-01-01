@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import Buttons from './Buttons';
 import { Wrapper, Title, PublishDate, Author, Image } from './Books.styled.js';
 
