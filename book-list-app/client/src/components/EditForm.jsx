@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Header, InputBox, InputLabel, Save, Cancel } from './EditForm.styled.js';
+import { Form, Header, InputBox, InputLabel, Save, Cancel } from '../styled/EditForm.styled';
 
 class EditForm extends Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Buttons from './Buttons';
-import { Wrapper, Title, PublishDate, Author, Image } from './Books.styled.js';
+import { Wrapper, Title, PublishDate, Author, Image } from '../styled/Books.styled';
 
 const Book = ({ book, onChangeBook, onDelete }) => (
   <Wrapper key={book.id}>

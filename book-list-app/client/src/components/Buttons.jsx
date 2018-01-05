@@ -3,25 +3,7 @@ import styled from 'styled-components';
 import Modal from './Modal';
 import EditForm from './EditForm';
 import DeleteBook from './DeleteBook';
-
-const Wrapper = styled.div`
-  grid-area: Buttons;
-  align-self: center;
-`;
-
-const EditButton = styled.button`
-  background: #1d1e20;
-  color: white;
-  border: 1px solid #2c2d2f;
-  padding: 10px 20px;
-`;
-
-const DeleteButton = styled.button`
-  background: #1d1e20;
-  color: white;
-  border: 1px solid #2c2d2f;
-  padding: 10px 20px;
-`;
+import { Wrapper, EditButton, DeleteButton } from '../styled/Buttons.styled';
 
 class Edit extends Component {
   constructor(props) {
