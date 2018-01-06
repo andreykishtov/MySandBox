@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Wrapper, Button, Title } from '../styled/DeleteBook.styled';
 
 const DeleteBook = ({ toggleDeletePopup, onDelete, id }) => {

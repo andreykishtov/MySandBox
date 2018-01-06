@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import Modal from './Modal';
 import EditForm from './EditForm';
 import DeleteBook from './DeleteBook';

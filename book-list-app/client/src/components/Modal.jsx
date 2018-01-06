@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import { Wrapper, BackDrop } from '../styled/Modal.styled';
 
 const Modal = ({ onClose, children, isOpen }) =>
