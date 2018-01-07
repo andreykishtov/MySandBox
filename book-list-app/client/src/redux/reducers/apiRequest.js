@@ -51,9 +51,4 @@ function postsBySubreddit(state = {}, action) {
   }
 }
 
-const rootReducer = combineReducers({
-  postsBySubreddit,
-  selectedSubreddit
-});
-
-export default rootReducer;
+export default selectedSubreddit;

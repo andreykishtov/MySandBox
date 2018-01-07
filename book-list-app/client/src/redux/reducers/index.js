@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import api from './apiRequest';
+//import api from './apiRequest';
 
 const todoApp = combineReducers({
-  api
+  //api
 });
 
 export default todoApp;
