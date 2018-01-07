@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
-//import todos from './todos'
-//import visibilityFilter from './visibilityFilter'
+import api from './apiRequest';
 
 const todoApp = combineReducers({
-  //reducers
+  api
 });
 
 export default todoApp;

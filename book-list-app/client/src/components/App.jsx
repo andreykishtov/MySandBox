@@ -69,4 +69,9 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = (state, ownProps = {}) => {
+  console.log(state); // state
+  console.log(ownProps); // undefined
+};
+
 export default App;
