@@ -6,7 +6,7 @@ const que = queueSize => {
 
   array.length = queueSize;
 
-  const addTail = data => {
+  const setTail = data => {
     if (countInsert === queueSize) {
       return console.log('error no more space');
     }
@@ -29,17 +29,17 @@ const que = queueSize => {
   const PrintQueue = () =>
     console.log(array.reduce((acc, item, index) => `${acc} ${index}:${item} `, 'queue is:'));
 
-  return { addTail, getHead, PrintQueue };
+  return { setTail, getHead, PrintQueue };
 };
 
 const queue = que(5);
 
-queue.addTail('1');
-queue.addTail('2');
-queue.addTail('3');
-queue.addTail('4');
-queue.addTail('7');
-queue.addTail('8');
+queue.setTail('1');
+queue.setTail('2');
+queue.setTail('3');
+queue.setTail('4');
+queue.setTail('7');
+queue.setTail('8');
 
 queue.PrintQueue();
 
@@ -50,8 +50,8 @@ queue.getHead();
 queue.getHead();
 queue.getHead();
 
-queue.addTail('8');
-queue.addTail('8');
+queue.setTail('8');
+queue.setTail('8');
 
 queue.getHead();
 queue.getHead();
