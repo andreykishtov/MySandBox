@@ -1,4 +1,4 @@
-const que = (queueSize => {
+const que = queueSize => {
   const array = [];
   let countInsert = 0;
   let head = 0;
@@ -6,37 +6,53 @@ const que = (queueSize => {
 
   array.length = queueSize;
 
-  const addToQueue = data => {
-    if (countInsert === array.length) {
+  const addTail = data => {
+    if (countInsert === queueSize) {
       return console.log('error no more space');
     }
     array[tail] = data;
-    tail += 1;
+    tail === queueSize ? (tail = 0) : tail++;
     countInsert++;
     return console.log(`inserted: ${data} to queue`);
   };
 
   const getHead = () => {
-    if (!countInsert) {
+    if (countInsert === 0) {
       return console.log('error: array is empty');
     }
+    const data = array[head];
+    head === queueSize ? (head = 0) : head++;
     countInsert--;
-    head += 1;
-    return console.log(`your data: ${array[head - 1]}`);
+    return console.log(`your data: ${data}`);
   };
 
-  return { addToQueue, getHead };
-})();
+  const PrintQueue = () =>
+    console.log(array.reduce((acc, item, index) => `${acc} ${index}:${item} `, 'queue is:'));
+
+  return { addTail, getHead, PrintQueue };
+};
 
 const queue = que(5);
 
-queue.addToQueue('1');
-queue.addToQueue('2');
-queue.addToQueue('3');
-queue.addToQueue('4');
+queue.addTail('1');
+queue.addTail('2');
+queue.addTail('3');
+queue.addTail('4');
+queue.addTail('7');
+queue.addTail('8');
+
+queue.PrintQueue();
 
 queue.getHead();
 queue.getHead();
+queue.PrintQueue();
 queue.getHead();
 queue.getHead();
 queue.getHead();
+
+queue.addTail('8');
+queue.addTail('8');
+
+queue.getHead();
+queue.getHead();
+queue.PrintQueue();
