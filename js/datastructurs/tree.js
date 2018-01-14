@@ -1,3 +1,5 @@
+const queue = require('./que');
+
 const makeNode = (value = undefined, left = null, right = null) => ({
   left,
   right,
@@ -11,6 +13,8 @@ const buildTree = initialValue => {
     value: initialValue
   };
 
+  const treeQueue = queue(5);
+
   const TreeAdd = (node, reqTree, side) => {
     if (reqTree[side] === null) {
       return (reqTree[side] = node);
@@ -19,18 +23,22 @@ const buildTree = initialValue => {
     TreeAdd(node, reqTree[side], side);
   };
 
-  const AddNode = node => (node.value % 2 === 0 ? TreeAdd(node, tree, 'left') : TreeAdd(node, tree, 'right'));
+  const AddNode = node =>
+    node.value > 5 === true ? TreeAdd(node, tree, 'left') : TreeAdd(node, tree, 'right');
 
   const print = recTree => {
-    if (!recTree) {
-      return;
-    }
-    print(recTree.left) + print(recTree.right) + console.log(recTree.value);
+    treeQueue.setTail(recTree);
+    do {
+      var node = treeQueue.getHead();
+      console.log(node.value);
+      if (node.left) treeQueue.setTail(node.left);
+      if (node.right) treeQueue.setTail(node.right);
+    } while (node);
   };
 
   const printTree = () => print(tree);
 
-  return { AddNode, printTree };
+  return { AddNode, printTree, treeQueue };
 };
 
 const treeBuilt = buildTree(1);
@@ -49,3 +57,4 @@ treeBuilt.AddNode(node5);
 treeBuilt.AddNode(node6);
 
 treeBuilt.printTree();
+// treeBuilt.treeQueue.PrintQueue();

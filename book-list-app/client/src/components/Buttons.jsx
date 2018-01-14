@@ -21,7 +21,7 @@ class Edit extends Component {
         <EditButton onClick={() => this.toggleEditModal()}>Edit</EditButton>
         <DeleteButton onClick={() => this.toggleDeletePopup()}>Delete</DeleteButton>
         <Modal isOpen={this.state.editModalState}>
-          <EditForm onChangeBook={this.props.onChangeBook} toggleModal={this.toggleEditModal} book={book} />
+          <EditForm toggleModal={this.toggleEditModal} book={book} />
         </Modal>
         <Modal isOpen={this.state.DeletePopup}>
           <DeleteBook id={book.id} onDelete={onDelete} toggleDeletePopup={this.toggleDeletePopup} />

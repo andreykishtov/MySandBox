@@ -1,33 +1,20 @@
 import axios from 'axios';
 import { GET_BOOKS, GET_BOOKS_SUCCESS, GET_BOOKS_FAILURE } from '../constants/user';
 
-export const tryLogin = () => ({ type: TRY_LOGIN });
-export const loginSuccess = () => ({ type: LOGIN_SUCCESS });
-export const logout = () => ({ type: LOGOUT });
-export const loginFailure = error => ({
-  type: LOGIN_FAILURE,
+export const getBooks = () => ({ type: GET_BOOKS });
+export const getBooksSuccess = () => ({ type: GET_BOOKS_SUCCESS });
+export const getBooksFailure = error => ({
+  type: GET_BOOKS_FAILURE,
   payload: { error }
 });
-export const toggleLoginDialog = () => ({ type: TOGGLE_LOGIN_DIALOG });
 
-const api = {
-  signup: '/api/v1/users',
-  login: '/api/v1/users/signIn'
-};
-
-export const loginSignupRequest = (url, userDetail) => async dispatch => {
-  dispatch(tryLogin());
+export const booksRequest = (url = '/api/v1/users') => async dispatch => {
+  dispatch(getBooks());
 
   try {
-    const res = await axios.post(api[url], userDetail);
-    const { token } = res.data;
-    localStorage.token = token;
-    axios.defaults.headers.common.Authorization = token;
-    // just to have time for the 'loading-spinnner'
-    setTimeout(() => {
-      dispatch(loginSuccess());
-    }, 2000);
+    const books = await axios.get(url);
+    dispatch(getBooksSuccess());
   } catch ({ response: { status } }) {
-    dispatch(loginFailure(status));
+    dispatch(getBooksFailure(status));
   }
 };
