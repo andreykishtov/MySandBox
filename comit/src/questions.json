@@ -2,11 +2,13 @@
   {
     "id": "1",
     "question": "which city is the capital of England ?",
-    "answers": ["sheffild", "London", "Manchester", "Edinburgh"]
+    "answers": ["sheffild", "London", "Manchester", "Edinburgh"],
+    "answer": "1"
   },
   {
     "id": "2",
     "question": "which city is the capital of England 2 ?",
-    "answers": ["sheffissld", "Lonssdon", "Maaanchester", "Edsainburgh"]
+    "answers": ["sheffissld", "Lonssdon", "Maaanchester", "Edsainburgh"],
+    "answer": "2"
   }
 ]

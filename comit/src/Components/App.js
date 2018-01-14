@@ -10,16 +10,33 @@ const Wrapper = styled.div``;
 class App extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { questionNumber: 0 };
+    this.state = { questionNumber: 0, selectedOptions: [] };
+  }
+
+  calculate() {
+    return console.log(this.state.selectedOptions.filter(item => item === true).length);
   }
 
   render() {
-    const questionsArray = questions.map(question => (
+    const questionsArray = questions.map((question, questionIndex) => (
       <Wrapper>
         <h1>{question.question}</h1>
-        {question.answers.map(item => (
+        {question.answers.map((item, index) => (
           <div key={item}>
-            <input type="radio" name={question.id} />
+            <input
+              type="radio"
+              value={index}
+              checked={this.state.selectedOptions[questionIndex] === '' + index}
+              onChange={changeEvent =>
+                this.setState({
+                  selectedOptions: [
+                    ...this.state.selectedOptions,
+                    (this.state.selectedOptions[questionIndex] = changeEvent.target.value)
+                  ]
+                })
+              }
+              name={question.id}
+            />
             <p>{item}</p>
           </div>
         ))}
@@ -31,7 +48,7 @@ class App extends Component {
           </button>
         )}
         {questions.length === +question.id ? (
-          <button>Done</button>
+          <button onClick={() => this.calculate()}>Done</button>
         ) : (
           <button onClick={() => this.setState({ questionNumber: this.state.questionNumber + 1 })}>
             Next
