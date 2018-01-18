@@ -13,6 +13,12 @@ class App extends Component {
     this.state = { questionNumber: 0, selectedOptions: [] };
   }
 
+  componentWillMount = async () => {
+    let response = await fetch('http://localhost:4000/questions');
+    let json = await response.json();
+    this.setState({ questions });
+  };
+
   calculate() {
     return console.log(this.state.selectedOptions.filter(item => item === true).length);
   }
@@ -26,7 +32,7 @@ class App extends Component {
             <input
               type="radio"
               value={index}
-              checked={this.state.selectedOptions[questionIndex] === '' + index}
+              checked={this.state.selectedOptions[questionIndex] === index}
               onChange={changeEvent =>
                 this.setState({
                   selectedOptions: [
@@ -47,7 +53,7 @@ class App extends Component {
             Prev
           </button>
         )}
-        {questions.length === +question.id ? (
+        {questions.length === question.id ? (
           <button onClick={() => this.calculate()}>Done</button>
         ) : (
           <button onClick={() => this.setState({ questionNumber: this.state.questionNumber + 1 })}>
