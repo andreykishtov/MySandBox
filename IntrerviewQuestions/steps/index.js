@@ -17,6 +17,42 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+function steps(n) {
+  Array(n)
+    .fill('')
+    .map((item, index, arr) => {
+      let string = '';
+
+      for (let i = 0; i <= index; i++) {
+        string += '#';
+      }
+
+      for (let i = index; i < n - 1; i++) {
+        string += ' ';
+      }
+
+      return string;
+    })
+    .forEach(item => console.log(item));
+}
 
 module.exports = steps;
+
+// function steps(n) {
+//   Array(n)
+//     .fill('')
+//     .map((item, index, arr) => {
+//       let string = '';
+
+//       for (let i = 0; i <= index; i++) {
+//         string += '#';
+//       }
+
+//       for (let i = index; i < n - 1; i++) {
+//         string += ' ';
+//       }
+
+//       return string;
+//     })
+//     .forEach(item => console.log(item));
+// }
