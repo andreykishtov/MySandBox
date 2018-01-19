@@ -14,6 +14,9 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+function pyramid(n) {
+  const row = n;
+  const column = n === 1 ? n : n + 2;
+}
 
 module.exports = pyramid;
