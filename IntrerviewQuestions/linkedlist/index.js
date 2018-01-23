@@ -33,11 +33,18 @@ class LinkedList {
   }
 
   getLast() {
-    let last = this.head;
-    while (last.next !== null) {
-      last = last.next;
+    if (!this.head) {
+      return null;
     }
-    return last;
+
+    let node = this.head;
+
+    while (node) {
+      if (!node.next) {
+        return node;
+      }
+      node = node.next;
+    }
   }
 
   clear() {
@@ -45,16 +52,20 @@ class LinkedList {
   }
 
   removeFirst() {
+    if (!this.head) {
+      return;
+    }
+
     this.head = this.head.next;
   }
 
   removeLast() {
-    let curr = this.head;
-    let prev = curr;
-
-    if (curr === null) {
+    if (this.head === null) {
       return null;
     }
+
+    let curr = this.head;
+    let prev = curr;
 
     if (curr.next === null) {
       this.head = null;
@@ -68,6 +79,13 @@ class LinkedList {
 
     prev.next = null;
     return curr;
+  }
+
+  insertLast(record) {
+    const lastNode = this.getLast();
+    const newNode = new Node(record);
+
+    lastNode ? (lastNode.next = newNode) : (this.head = newNode);
   }
 }
 
