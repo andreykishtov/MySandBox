@@ -104,28 +104,30 @@ class LinkedList {
   }
 
   removeAt(index) {
-    let counter = 1;
-    let node = this.head;
+    if (!this.head) {
+      return null;
+    }
+    const size = this.size();
 
-    if (!node.next) {
-      node = null;
+    if (index > size || index < 0) {
+      return null;
     }
 
-    if (1 === index) {
-      this.removeFirst();
+    if (index === 0) {
+      return this.removeFirst();
     }
 
-    while (node) {
-      if (counter === index + 1) {
-        node = node.next || null;
-        return;
-      }
-
-      counter++;
-      node = node.next;
+    if (size === index) {
+      this.removeLast();
     }
 
-    return null;
+    const prev = this.getAt(index - 1);
+
+    if (!prev || !prev.next) {
+      return null;
+    }
+
+    prev.next = prev.next.next;
   }
 }
 
