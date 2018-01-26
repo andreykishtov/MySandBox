@@ -53,7 +53,7 @@ class App extends Component {
             Prev
           </button>
         )}
-        {questions.length === question.id ? (
+        {questions.length === +question.id ? (
           <button onClick={() => this.calculate()}>Done</button>
         ) : (
           <button onClick={() => this.setState({ questionNumber: this.state.questionNumber + 1 })}>
