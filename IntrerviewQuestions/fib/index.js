@@ -8,18 +8,28 @@
 // Example:
 //   fib(4) === 3
 
-function memorize(fn) {
-  const cache = {};
-  return function(...args) {
-    if (cache[args]) {
-      return cache[args];
-    }
+// function memorize(fn) {
+//   const cache = {};
+//   return function(...args) {
+//     if (cache[args]) {
+//       return cache[args];
+//     }
 
-    const result = fn.apply(this, args);
-    cache[args] = result;
-    return result;
-  };
-}
+//     const result = fn.apply(this, args);
+//     cache[args] = result;
+//     return result;
+//   };
+// }
+
+const memorize = (fn, cache = {}) => (...args) => {
+  if (cache[args]) {
+    return cache[args];
+  }
+
+  const result = fn.apply(this, args);
+  cache[args] = result;
+  return result;
+};
 
 function fib(n) {
   if (n < 2) {
