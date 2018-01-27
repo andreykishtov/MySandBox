@@ -144,6 +144,14 @@ class LinkedList {
     const newNode = new Node(data, node.next);
     node.next = newNode;
   }
+
+  forEach(fn) {
+    let node = this.head;
+    while (node) {
+      fn(node);
+      node = node.next;
+    }
+  }
 }
 
 module.exports = { Node, LinkedList };
