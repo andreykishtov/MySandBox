@@ -17,14 +17,14 @@ function midpoint(list) {
     return null;
   }
 
-  let q = list.head;
-  let q2 = list.head;
+  let slow = list.head;
+  let fast = list.head;
 
-  while (q2) {
-    if (!q2.next || !q2.next.next) return q;
-    q = q.next;
-    q2 = q2.next.next;
+  while (fast.next && fast.next.next) {
+    slow = slow.next;
+    fast = fast.next.next;
   }
+  return slow;
 }
 
 module.exports = midpoint;
