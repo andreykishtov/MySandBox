@@ -42,3 +42,12 @@ function maxMultiple(divisor, bound) {
 function maxMultiple(divisor, bound) {
   return bound - bound % divisor;
 }
+
+function circleOfNumbers(n, firstNumber) {
+  let num = Math.floor(n / 2) + firstNumber;
+  return num >= n ? Math.abs(n - num) : num;
+}
+
+function circleOfNumbers(n, firstNumber) {
+  return (firstNumber + n / 2) % n;
+}
