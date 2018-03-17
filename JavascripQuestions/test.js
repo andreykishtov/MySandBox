@@ -24,6 +24,18 @@ function check(Arr) {
   return result;
 }
 
+
+function check(Arr) {
+  let result = true;
+  Arr.reduce((acc, currentValue) => {
+    if (acc >= currentValue) {
+      result = false;
+    }
+    return currentValue;
+  }, -Infinity);
+  return result;
+}
+
 $('.main').mouseup(function() {
   var range, sel;
   var colour = 'yellow';
