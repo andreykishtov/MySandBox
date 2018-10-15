@@ -23,7 +23,7 @@ class MyView1 extends PolymerElement {
       </style>
 
       <div class="card">
-        <div class="circle">1</div>
+        <div class="circle" onclick="()=> console.log('works')">1</div>
         <h1>View One</h1>
         <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
         <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>

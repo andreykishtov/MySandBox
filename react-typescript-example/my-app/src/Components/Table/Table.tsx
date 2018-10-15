@@ -1,12 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import *as JSON from '../../Data/moch';
-declare module "*.json" {
-  const value: any;
-  export default value;
-}
-
+import * as JSON from '../../Data/moch.json';
 
 export interface TableProps {
   tableName: string;
