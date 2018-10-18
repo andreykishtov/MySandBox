@@ -1,6 +1,6 @@
 <template>
 
-<ul class="list-group">
+<ul class="list-group col-md-6">
   <VideoListItem
   @videoSelect="onVideoSelect"
   v-for="video in videos"
